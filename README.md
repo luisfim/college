@@ -1,9 +1,9 @@
-# Trabalhos da Faculdade
+# College Assignments
 
-Este repositório reúne atividades, exercícios e projetos desenvolvidos ao longo da faculdade.
+This repository contains assignments, exercises, and projects developed throughout college.
 
-Cada pasta representa uma disciplina diferente e contém os trabalhos relacionados àquela cadeira.
+Each folder represents a different course and contains the work related to that subject.
 
-O objetivo deste repositório é manter os trabalhos organizados, armazenados e acessíveis para consulta futura.
+The purpose of this repository is to keep my academic work organized, backed up, and available for future reference.
 
-> Este repositório possui finalidade acadêmica e de estudo.
+> This repository is intended for academic and study purposes.

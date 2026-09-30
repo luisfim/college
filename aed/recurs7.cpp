@@ -1,10 +1,10 @@
-// 5. Contagem regressiva: versao recursiva.
+// 7. Contagem regressiva: versao iterativa.
 #include <cstdio>
 
 void contagem_regressiva(int n) {
-    if (n < 0) return;
-    std::printf("%d%s", n, n == 0 ? "\n" : ", ");
-    contagem_regressiva(n - 1);
+    for (int i = n; i >= 0; i--) {
+        std::printf("%d%s", i, i == 0 ? "\n" : ", ");
+    }
 }
 
 int main() {

@@ -1,40 +1,36 @@
-#include <iostream>
-#include <string>
+// 6. Livros publicados APOS o ano informado.
 #include <cstdio>
-#include <vector>
 
-struct Livro{
-    char Titulo [51];
-    char Autor [51];
+struct Livro {
+    char Titulo[51];
+    char Autor[51];
     int Ano;
 };
 
-void Pesquisar(Livro Vetor[],int Inicio){
-    for(int i=0; i<3; i++){
-        if(Vetor[i].Ano>=Inicio){
-            std::printf("%s",Vetor[i].Titulo);
+void Pesquisar(const Livro vetor[], int quantidade, int ano) {
+    bool encontrou = false;
+    for (int i = 0; i < quantidade; i++) {
+        if (vetor[i].Ano > ano) {
+            std::printf("%s | %s | %d\n", vetor[i].Titulo, vetor[i].Autor, vetor[i].Ano);
+            encontrou = true;
         }
     }
-};
+    if (!encontrou) std::printf("Nenhum livro encontrado.\n");
+}
 
-int main(){
-    Livro Obras[3];
-    int AnoInicial;
-
-    for(int i=0; i<3; i++){
-        std::printf("Qual o titulo?");
-        std::scanf("%50s", Obras[i].Titulo);
-        std::printf("Qual o autor?");
-        std::scanf("%50s", & Obras[i].Autor);
-        std::printf("Qual o ano de publicação?");
-        std::scanf("%d", & Obras[i].Ano);
-    };
-
-    std::printf("Você deseja livros a partir de qual ano?");
-    std::scanf("%d", &AnoInicial);
-
-    Pesquisar(Obras,AnoInicial);
-
-
+int main() {
+    Livro obras[3];
+    int anoInicial;
+    for (int i = 0; i < 3; i++) {
+        std::printf("\nLivro %d\nTitulo: ", i + 1);
+        if (std::scanf(" %50[^\n]", obras[i].Titulo) != 1) return 1;
+        std::printf("Autor: ");
+        if (std::scanf(" %50[^\n]", obras[i].Autor) != 1) return 1;
+        std::printf("Ano de publicacao: ");
+        if (std::scanf("%d", &obras[i].Ano) != 1) return 1;
+    }
+    std::printf("Buscar livros publicados apos qual ano? ");
+    if (std::scanf("%d", &anoInicial) != 1) return 1;
+    Pesquisar(obras, 3, anoInicial);
     return 0;
-};
+}

@@ -1,29 +1,24 @@
-#include <iostream>
-#include <string>
+// 2. Vetor de cinco alunos e media das notas.
 #include <cstdio>
 
-struct Aluno{
-    char Nome [51];
+struct Aluno {
+    char Nome[51];
     int Matricula;
     float Nota;
-
 };
 
-int main(){
-    float media=0;
+int main() {
     Aluno alunos[5];
-    for (int i=0; i<5; i++){
-        std::printf("Qual o nome do aluno?");
-        std::scanf("%50s", alunos[i].Nome);
-        std::printf("Qual a matricula?");
-        std::scanf("%d", & alunos[i].Matricula);
-        std::printf("Qual a nota?");
-        std::scanf("%f", & alunos[i].Nota);
-        media = media + alunos[i].Nota;
+    float soma = 0;
+    for (int i = 0; i < 5; i++) {
+        std::printf("\nAluno %d\nNome: ", i + 1);
+        if (std::scanf(" %50[^\n]", alunos[i].Nome) != 1) return 1;
+        std::printf("Matricula: ");
+        if (std::scanf("%d", &alunos[i].Matricula) != 1) return 1;
+        std::printf("Nota: ");
+        if (std::scanf("%f", &alunos[i].Nota) != 1) return 1;
+        soma += alunos[i].Nota;
     }
-
-    media = media/5;
-
-    std::printf("O media de notas dos alunos foi %f", media);
+    std::printf("\nMedia das notas: %.2f\n", soma / 5);
     return 0;
 }

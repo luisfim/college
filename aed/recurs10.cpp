@@ -1,11 +1,17 @@
-// 4. Produto sem multiplicacao: versao recursiva.
+// 10. Produto sem multiplicacao: versao iterativa.
 #include <cstdio>
 
 long long produto(int a, int b) {
-    if (b == 0) return 0;
-    // Para b negativo, fazemos subtracoes sucessivas.
-    if (b < 0) return produto(a, b + 1) - a;
-    return a + produto(a, b - 1);
+    long long resultado = 0;
+    while (b > 0) {
+        resultado += a;
+        b--;
+    }
+    while (b < 0) {
+        resultado -= a;
+        b++;
+    }
+    return resultado;
 }
 
 int main() {

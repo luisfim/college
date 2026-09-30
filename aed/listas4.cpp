@@ -1,4 +1,4 @@
-// Listas 1. Lista encadeada simples.
+// Listas 4. Lista encadeada simples.
 // No*& permite que a funcao atualize o ponteiro de inicio do chamador.
 
 #include <cstdio>
@@ -61,12 +61,25 @@ void liberar(No*& inicio) {
     }
 }
 
+void inverter(No*& inicio) {
+    No* anterior = nullptr;
+    No* atual = inicio;
+    while (atual != nullptr) {
+        // Salva o proximo antes de inverter o elo atual.
+        No* proximo = atual->ptr;
+        atual->ptr = anterior;
+        anterior = atual;
+        atual = proximo;
+    }
+    inicio = anterior;
+}
+
 int main() {
     No* inicio = nullptr;
     int opcao, valor;
     int resultado = 0;
     while (true) {
-        std::printf("\n1 - Inserir no inicio\n2 - Inserir no final\n3 - Remover\n4 - Exibir\n0 - Sair\nOpcao: ");
+        std::printf("\n1 - Inserir no inicio\n2 - Inserir no final\n3 - Remover\n4 - Exibir\n5 - Inverter\n0 - Sair\nOpcao: ");
         if (std::scanf("%d", &opcao) != 1) { resultado = 1; break; }
         if (opcao == 0) break;
         if (opcao >= 1 && opcao <= 3) {
@@ -77,7 +90,7 @@ int main() {
             if (opcao == 3 && !remover(inicio, valor)) std::printf("Valor nao encontrado.\n");
         } else if (opcao == 4) {
             exibir(inicio);
-        }  else {
+        } else if (opcao == 5) { inverter(inicio); exibir(inicio); } else {
             std::printf("Opcao invalida.\n");
         }
     }

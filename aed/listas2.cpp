@@ -1,4 +1,4 @@
-// Listas 1. Lista encadeada simples.
+// Listas 2. Lista encadeada simples.
 // No*& permite que a funcao atualize o ponteiro de inicio do chamador.
 
 #include <cstdio>
@@ -61,12 +61,18 @@ void liberar(No*& inicio) {
     }
 }
 
+int contar(const No* inicio) {
+    int quantidade = 0;
+    for (const No* atual = inicio; atual != nullptr; atual = atual->ptr) quantidade++;
+    return quantidade;
+}
+
 int main() {
     No* inicio = nullptr;
     int opcao, valor;
     int resultado = 0;
     while (true) {
-        std::printf("\n1 - Inserir no inicio\n2 - Inserir no final\n3 - Remover\n4 - Exibir\n0 - Sair\nOpcao: ");
+        std::printf("\n1 - Inserir no inicio\n2 - Inserir no final\n3 - Remover\n4 - Exibir\n5 - Contar\n0 - Sair\nOpcao: ");
         if (std::scanf("%d", &opcao) != 1) { resultado = 1; break; }
         if (opcao == 0) break;
         if (opcao >= 1 && opcao <= 3) {
@@ -77,7 +83,7 @@ int main() {
             if (opcao == 3 && !remover(inicio, valor)) std::printf("Valor nao encontrado.\n");
         } else if (opcao == 4) {
             exibir(inicio);
-        }  else {
+        } else if (opcao == 5) { std::printf("Quantidade: %d\n", contar(inicio)); } else {
             std::printf("Opcao invalida.\n");
         }
     }

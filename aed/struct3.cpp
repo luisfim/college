@@ -1,28 +1,25 @@
-#include <iostream>
-#include <string>
+// 3. Passando uma struct para uma funcao.
 #include <cstdio>
 
-struct Produto{
-    char Nome [31];
+struct Produto {
+    char Nome[31];
     int Codigo;
     float Preco;
-
 };
 
-void Info(Produto Item){
-    std::printf("O produto %s tem o código %d e custa %f", Item.Nome, Item.Codigo, Item.Preco);
+void Info(Produto item) {
+    std::printf("\nProduto: %s\nCodigo: %d\nPreco: R$ %.2f\n",
+                item.Nome, item.Codigo, item.Preco);
 }
 
-int main(){
-    Produto Item1;
-    std::printf("Digite o nome do produto");
-    std::scanf("%30s", Item1.Nome);
-    std::printf("Qual o código?");
-    std::scanf("%d", & Item1.Codigo);
-    std::printf("Qual o preço?");
-    std::scanf("%f", & Item1.Preco);
-
-    Info(Item1);
-
+int main() {
+    Produto item;
+    std::printf("Nome do produto: ");
+    if (std::scanf(" %30[^\n]", item.Nome) != 1) return 1;
+    std::printf("Codigo: ");
+    if (std::scanf("%d", &item.Codigo) != 1) return 1;
+    std::printf("Preco: ");
+    if (std::scanf("%f", &item.Preco) != 1) return 1;
+    Info(item);
     return 0;
 }

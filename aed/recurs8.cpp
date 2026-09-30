@@ -1,11 +1,12 @@
-// 2. Maior elemento: versao recursiva.
+// 8. Maior elemento: versao iterativa.
 #include <cstdio>
 
 int maior_elemento(int vet[], int n) {
-    // Pre-condicao: o vetor tem pelo menos um elemento.
-    if (n == 1) return vet[0];
-    int maior = maior_elemento(vet, n - 1);
-    if (vet[n - 1] > maior) return vet[n - 1];
+    // Comecar em vet[0] tambem funciona com valores todos negativos.
+    int maior = vet[0];
+    for (int i = 1; i < n; i++) {
+        if (vet[i] > maior) maior = vet[i];
+    }
     return maior;
 }
 

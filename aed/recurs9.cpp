@@ -1,11 +1,15 @@
-// 3. Soma dos digitos: versao recursiva.
+// 9. Soma dos digitos: versao iterativa.
 #include <cstdio>
 
 int soma_digitos(int n) {
-    if (n == 0) return 0;
-    int digito = n % 10;
-    if (digito < 0) digito = -digito;
-    return digito + soma_digitos(n / 10);
+    int soma = 0;
+    while (n != 0) {
+        int digito = n % 10;
+        if (digito < 0) digito = -digito;
+        soma += digito;
+        n /= 10;
+    }
+    return soma;
 }
 
 int main() {
